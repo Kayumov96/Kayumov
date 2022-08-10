@@ -98,9 +98,7 @@ class Navbar extends Component {
         return (
           <>
             <option value="$">$</option>
-            <option value="€" selected>
-              €
-            </option>
+            <option value="€">€</option>
             <option value="¥">¥</option>
           </>
         );
@@ -109,17 +107,13 @@ class Navbar extends Component {
           <>
             <option value="$">$</option>
             <option value="€ ">€</option>
-            <option value="¥" selected>
-              ¥
-            </option>
+            <option value="¥">¥</option>
           </>
         );
       } else {
         return (
           <>
-            <option value="$" selected>
-              $
-            </option>
+            <option value="$">$</option>
             <option value="€">€</option>
             <option value="¥">¥</option>
           </>
@@ -153,7 +147,8 @@ class Navbar extends Component {
             <div style={{ position: "relative" }}>
               <Logo.Icon
                 onClick={() => this.showMyCart()}
-                cartitems={this.state.cart || this.getItemsCount()}
+                // cartitems={this.state.cart || this.getItemsCount()}
+                cartitems={this.state?.count || []}
               />
               <CartItems.Amount id="items-count">
                 {this?.context?.cart.length}

@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { data } from "../../mock/mock";
+import MainContext from "../Context";
 import Navbar from "../Navbar";
 import { Button, Container, Getsize, Imeg, Item, Text } from "./style";
 
 class DetailPage extends Component {
+  // static contextType = MainContext;
   constructor(props) {
     super(props);
     this.queryParams = new URLSearchParams(window.location.search);
@@ -20,6 +22,25 @@ class DetailPage extends Component {
   }
 
   render() {
+    // const context = this.context;
+    // function handleAdd(getProduct) {
+    //   let eq = "false";
+    //   for (let i in context.cart) {
+    //     if (context.cart[i].id == this.getProduct().id) {
+    //       eq = "true";
+    //       break;
+    //     }
+    //   }
+    //   if (!eq) {
+    //     var tot = context.cart.push(this.getProduct());
+    //     context.total += parseFloat(this.getProduct().price);
+    //     document.getElementById("items-count").innerText = context.cart.length;
+    //     return tot;
+    //   }
+    // }
+    function handleColor(val) {
+      val.map((v, i) => console.log(v, i, "toopppp"));
+    }
     return (
       <>
         <Navbar />
@@ -38,13 +59,17 @@ class DetailPage extends Component {
             <Text.Mini>Size:</Text.Mini>
             <Getsize>
               {this.getProduct().size.map((val, index) => (
-                <Button.Size key={index}>{val}</Button.Size>
+                <Button.Size key={index} onClick={() => handleColor(val)}>
+                  {val}
+                </Button.Size>
               ))}
             </Getsize>
             <Text.Mini>Color:</Text.Mini>
             <Getsize>
               {this.getProduct().color.map((val, index) => (
-                <Button.Size key={index}>{val}</Button.Size>
+                <Button.Size key={index} onClick={() => handleColor(val)}>
+                  {val}
+                </Button.Size>
               ))}
             </Getsize>
             <Text.Mini>price:</Text.Mini>

@@ -57,13 +57,17 @@ class CartOverlay extends Component {
   updateCount(num) {
     for (let i in this.context.cart) {
       if (this.props.value.id === this.context.cart[i].id) {
-        this.context.cart[i].count = this.context.cart[i].count ? this.context.cart[i].count+num : num+1;
-        this.setState({count: this.context.cart[i].count});
+        this.context.cart[i].count = this.context.cart[i].count
+          ? this.context.cart[i].count + num
+          : num + 1;
+        this.setState({ count: this.context.cart[i].count });
         let total = 0;
         let count = 0;
         for (let j in this.context.cart) {
-          total+=parseFloat(this.context.cart[j].price * (this.context.cart[j].count || 1))
-          count+=parseInt(1 * (this.context.cart[j].count || 1))
+          total += parseFloat(
+            this.context.cart[j].price * (this.context.cart[j].count || 1)
+          );
+          count += parseInt(1 * (this.context.cart[j].count || 1));
         }
         document.getElementById("total-price").innerText = total;
         document.getElementById("all-items-count").innerText = count;
@@ -107,19 +111,11 @@ class CartOverlay extends Component {
               padding: "6px 3px",
             }}
           >
-            <Btn onClick={() => console.log(this.updateCount(1))}>
-              +
-            </Btn>
+            <Btn onClick={() => this.updateCount(1)}>+</Btn>
             {this.state.count}
-            <Btn onClick={() => console.log(this.updateCount(-1))}>
-              -
-            </Btn>
+            <Btn onClick={() => this.updateCount(-1)}>-</Btn>
           </Select.BtnDiv>
-          <CartItems.Img
-            src={value.src}
-            alt="product"
-            // style={{ width: "25px" }}
-          />
+          <CartItems.Img src={value.src} alt="product" />
         </CartItems>
       </>
     );
