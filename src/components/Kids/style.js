@@ -4,8 +4,7 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  gap: auto;
-  padding: 20px;
+  /* padding: 20px; */
   margin-top: 10%;
   flex-wrap: wrap;
   overflow: scroll;
@@ -40,16 +39,22 @@ const Card = styled.div`
   flex-direction: column;
   padding: 10px;
   padding-bottom: 15px;
-  width: 27%;
-  height: 37%;
+  width: 386px;
+  height: 444px;
   cursor: pointer;
   :hover {
     box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
   }
 `;
+Card.Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: auto;
+  /* background: blue; */
+`;
 const CardImg = styled.img`
   width: ${({ cart }) => (cart ? "20px" : "98%")};
-  height: 60%;
-  margin-bottom: 0;
+  height: ${({ cart }) => (cart ? "20px" : "340px")};
+  /* margin-bottom: 0; */
 `;
 export { Container, Card, CardImg, Header, AddCard };

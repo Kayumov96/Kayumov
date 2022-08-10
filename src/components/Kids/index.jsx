@@ -41,8 +41,8 @@ class Kids extends Component {
         {data.map(
           (value) =>
             value?.category === "kids" && (
-              <>
-                <Card key={value.id} className="card">
+              <Card.Wrapper key={value.id}>
+                <Card className="card">
                   <Link
                     to={`/details?id=${value.id}`}
                     params={value}
@@ -66,7 +66,7 @@ class Kids extends Component {
                       : "$"}
                   </h4>
                 </Card>
-              </>
+              </Card.Wrapper>
             )
         )}
       </Container>
