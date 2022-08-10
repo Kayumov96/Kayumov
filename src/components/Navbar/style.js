@@ -4,9 +4,9 @@ import { ReactComponent as cart1 } from "../../assets/icons/cart1.svg";
 const Container = styled.div`
   display: flex;
   align-items: center;
-  background: blue;
   width: 70%;
   position: fixed;
+  background: #ffffff;
   top: 0;
   z-index: 1;
   height: 80px;

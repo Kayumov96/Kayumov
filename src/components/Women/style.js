@@ -25,8 +25,9 @@ const Card = styled.div`
   cursor: pointer;
   flex-direction: column;
   padding: 10px;
-  width: 27%;
-  height: 35%;
+  padding-bottom: 15px;
+  width: 386px;
+  height: 444px;
   :hover {
     box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
   }
@@ -34,6 +35,12 @@ const Card = styled.div`
 // const getSize = ({ type }) => {
 //   return;
 // };
+Card.Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: auto;
+  /* background: blue; */
+`;
 const CardImg = styled.img`
   width: ${({ cart }) => (cart ? "20px" : "98%")};
   /* opacity: ${({ opacity }) => (opacity ? "0.5" : "")}; */
