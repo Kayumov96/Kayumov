@@ -22,7 +22,21 @@ class Men extends Component {
   }
   render() {
     const context = this.context;
-    function onHandle(val) {let eq=false;for(let i in  context.cart) {if (context.cart[i].id == val.id) {eq=true; break;};};if(!eq) {var tot = context.cart.push(val); context.total+=parseFloat(val.price); document.getElementById("items-count").innerText = context.cart.length;return tot;};};
+    function onHandle(val) {
+      let eq = false;
+      for (let i in context.cart) {
+        if (context.cart[i].id == val.id) {
+          eq = true;
+          break;
+        }
+      }
+      if (!eq) {
+        var tot = context.cart.push(val);
+        context.total += parseFloat(val.price);
+        document.getElementById("items-count").innerText = context.cart.length;
+        return tot;
+      }
+    }
 
     function sendTo(value) {
       this?.props?.navigation?.navigate("Details", { ...value });
@@ -34,36 +48,37 @@ class Men extends Component {
         {data.map(
           (value) =>
             value?.category === "men" && (
-              <>
-                <Card
-                  key={value?.id}
-                  className="card"
-                  onClick={() => sendTo(value)}
-                >
+              <Card.Wrapper key={value?.id}>
+                <Card className="card" onClick={() => sendTo(value)}>
                   {/* <NavLink
                     to={{
                       pathname: `/product/${value?.id}`,
                       state: { value },
                     }}
                   > */}
-                  
-                  <Link to={`/details?id=${value.id}`} params={value} target="_blank">
+
+                  <Link
+                    to={`/details?id=${value.id}`}
+                    params={value}
+                    target="_blank"
+                  >
                     <CardImg src={value?.src} alt="image" />
                   </Link>
 
                   {/* </NavLink> */}
                   <AddCard className="mini" onClick={() => onHandle(value)}>
-                    
-                      <CardImg cart src={cart} alt="add to cart" />
-                    
+                    <CardImg cart src={cart} alt="add to cart" />
                   </AddCard>
                   <Header mini>{value?.title}</Header>
                   <h4>
                     {/* {console.log(this.props, "valyuta")} */}
-                    {value?.price} {localStorage.getItem("curr") ? localStorage.getItem("curr") : "$"}
+                    {value?.price}{" "}
+                    {localStorage.getItem("curr")
+                      ? localStorage.getItem("curr")
+                      : "$"}
                   </h4>
                 </Card>
-              </>
+              </Card.Wrapper>
             )
         )}
       </Container>

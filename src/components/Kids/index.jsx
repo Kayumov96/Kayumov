@@ -17,10 +17,23 @@ class Kids extends Component {
     this.setState();
   }
 
-
   render() {
     const context = this.context;
-    function onHandle(val) {let eq=false;for(let i in  context.cart) {if (context.cart[i].id == val.id) {eq=true; break;};};if(!eq) {var tot = context.cart.push(val); context.total+=parseFloat(val.price); document.getElementById("items-count").innerText = context.cart.length;return tot;};};
+    function onHandle(val) {
+      let eq = false;
+      for (let i in context.cart) {
+        if (context.cart[i].id == val.id) {
+          eq = true;
+          break;
+        }
+      }
+      if (!eq) {
+        var tot = context.cart.push(val);
+        context.total += parseFloat(val.price);
+        document.getElementById("items-count").innerText = context.cart.length;
+        return tot;
+      }
+    }
     // const context = this.context;
     return (
       <Container>
@@ -28,21 +41,32 @@ class Kids extends Component {
         {data.map(
           (value) =>
             value?.category === "kids" && (
-              <Card key={value.id} className="card">
-                <Link to={`/details?id=${value.id}`} params={value} target="_blank">
-                  <CardImg src={value?.src} alt="image" />
-                </Link>
-                <AddCard className="mini">
-                  <CardImg
-                    cart
-                    src={cart}
-                    alt="add to cart"
-                    onClick={() => onHandle(value)}
-                  />
-                </AddCard>
-                <Header mini>{value?.title}</Header>
-                <h4>{value?.price} {localStorage.getItem("curr") ? localStorage.getItem("curr") : "$"}</h4>
-              </Card>
+              <>
+                <Card key={value.id} className="card">
+                  <Link
+                    to={`/details?id=${value.id}`}
+                    params={value}
+                    target="_blank"
+                  >
+                    <CardImg src={value?.src} alt="image" />
+                  </Link>
+                  <AddCard className="mini">
+                    <CardImg
+                      cart
+                      src={cart}
+                      alt="add to cart"
+                      onClick={() => onHandle(value)}
+                    />
+                  </AddCard>
+                  <Header mini>{value?.title}</Header>
+                  <h4>
+                    {value?.price}{" "}
+                    {localStorage.getItem("curr")
+                      ? localStorage.getItem("curr")
+                      : "$"}
+                  </h4>
+                </Card>
+              </>
             )
         )}
       </Container>

@@ -4,12 +4,7 @@ const Container = styled.div`
   margin-top: 10%;
   width: 100%;
   height: 100vh;
-  display: grid;
-  column-gap: 20px;
-  row-gap: 50px;
-  grid-template-columns: 3;
-  /* gap: auto; */
-  /* padding: 20px; */
+  display: flex;
   flex-wrap: wrap;
   overflow: scroll;
 `;
@@ -28,8 +23,8 @@ const Card = styled.div`
   flex-direction: column;
   padding: 10px;
   padding-bottom: 15px;
-  width: 250px;
-  max-width: var(--width);
+  width: 386px;
+  height: 444px;
   /* height: ; */
   cursor: pointer;
   :hover {
@@ -38,13 +33,13 @@ const Card = styled.div`
 `;
 Card.Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: auto auto auto;
   grid-gap: auto;
-  width: 100%;
+  /* background: blue; */
 `;
 const CardImg = styled.img`
   width: ${({ cart }) => (cart ? "20px" : "98%")};
-  height: 80%;
+  height: ${({ cart }) => (cart ? "20px" : "340px")};
 `;
 const AddCard = styled.button`
   width: 50px;

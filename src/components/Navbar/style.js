@@ -4,20 +4,15 @@ import { ReactComponent as cart1 } from "../../assets/icons/cart1.svg";
 const Container = styled.div`
   display: flex;
   align-items: center;
-  background: #ffffff;
-  width: 100%;
+  background: blue;
+  width: 70%;
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 1;
-  background-color: red;
-  margin-right: 100px;
-  /* margin-left: 100px; */
-  /* padding: 0 20px; */
   height: 80px;
+  margin-right: 60px;
   justify-content: space-between;
-  justify-content: center;
+  /* justify-content: center; */
   /* @media (max-width: 768px) {
     padding: 0 8px;
     width: 90%;

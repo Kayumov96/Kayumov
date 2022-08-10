@@ -41,9 +41,7 @@ const Card = styled.div`
   padding: 10px;
   padding-bottom: 15px;
   width: 27%;
-  height: 35%;
-  max-width: 386px;
-  max-height: 444px;
+  height: 37%;
   cursor: pointer;
   :hover {
     box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
@@ -51,6 +49,7 @@ const Card = styled.div`
 `;
 const CardImg = styled.img`
   width: ${({ cart }) => (cart ? "20px" : "98%")};
-  height: 80%;
+  height: 60%;
+  margin-bottom: 0;
 `;
 export { Container, Card, CardImg, Header, AddCard };

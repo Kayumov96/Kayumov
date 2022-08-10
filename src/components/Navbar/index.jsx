@@ -65,19 +65,19 @@ class Navbar extends Component {
   getTotalSum() {
     let total = 0;
     for (let i in this.context.cart) {
-      total+=parseFloat(this.context.cart[i].price * (this.context.cart[i].count || 1))
+      total += parseFloat(
+        this.context.cart[i].price * (this.context.cart[i].count || 1)
+      );
     }
     return total;
   }
   getItemsCount() {
     let total = 0;
     for (let i in this.context.cart) {
-      total+=parseInt(1 * (this.context.cart[i].count || 1))
+      total += parseInt(1 * (this.context.cart[i].count || 1));
     }
     return total;
   }
-
-
 
   render() {
     const context = this.context;
@@ -89,11 +89,39 @@ class Navbar extends Component {
 
     const onSelect = (e) => {
       this.setState({ valute: e.target.value });
-      let Cvalue = e.target.value;
-      localStorage.setItem("curr", Cvalue)
-      window.location.reload();
+      let Currentvalue = e.target.value;
+      window.localStorage.setItem("curr", JSON.stringify(Currentvalue));
+      // window.location.reload();
     };
-    const getSelectButton= () => {if (localStorage.getItem("curr")  == "€ ") {return <><option value="$" >$</option><option value="€" selected>€</option><option value="¥" >¥</option></>} else if (localStorage.getItem("curr")  == "¥") {return <><option value="$" >$</option><option value="€ " >€</option><option value="¥" selected>¥</option></>} else {return <><option value="$" selected>$</option><option value="€ " >€</option><option value="¥" >¥</option></>}}
+    const getSelectButton = () => {
+      if (JSON.parse(window.localStorage.getItem("curr") == "€")) {
+        return (
+          <>
+            <option value="$">$</option>
+            <option value="€">€</option>
+            <option value="¥">¥</option>
+          </>
+        );
+      } else if (JSON.parse(window.localStorage.getItem("curr") == "¥")) {
+        return (
+          <>
+            <option value="$">$</option>
+            <option value="€ ">€</option>
+            <option value="¥">¥</option>
+          </>
+        );
+      } else {
+        return (
+          <>
+            <option value="$" selected>
+              $
+            </option>
+            <option value="€">€</option>
+            <option value="¥">¥</option>
+          </>
+        );
+      }
+    };
     return (
       <>
         <Container>
@@ -112,31 +140,37 @@ class Navbar extends Component {
             );
           })}
 
-          <Container.Title style={{ width: "65%" }}>
+          <Container.Title style={{ width: "40%" }}>
             <Logo src={logo} alt="Logo" />
           </Container.Title>
           <Container.Title>
-            <Select  onChange={onSelect}>
-              {getSelectButton()}
-            </Select>
+            <Select onChange={onSelect}>{getSelectButton()}</Select>
             <div style={{ position: "relative" }}>
               <Logo.Icon
                 onClick={() => this.showMyCart()}
-                cartitems={this.state.cart}
+                cartitems={this.state.cart || this.getItemsCount()}
               />
-              <CartItems.Amount id="items-count">{this?.context?.cart.length}</CartItems.Amount>
+              <CartItems.Amount id="items-count">
+                {this?.context?.cart.length}
+              </CartItems.Amount>
             </div>
             {this.state.showCart && (
               <Container.CartWrapper>
                 <Container.Cart>
                   <Container.CartText>
                     My Bag:
-                    <h5><span id="all-items-count">{this.getItemsCount()}</span> items</h5>
+                    <h5>
+                      <span id="all-items-count">{this.getItemsCount()}</span>{" "}
+                      items
+                    </h5>
                   </Container.CartText>
                   {context?.cart.map((value) => {
                     return <CartOverlay value={value} />;
                   })}
-                  <h5>Total: <span id="total-price">{this.getTotalSum()}</span> {localStorage.getItem("curr")}</h5>
+                  <h5>
+                    Total: <span id="total-price">{this.getTotalSum()}</span>{" "}
+                    {localStorage.getItem("curr")}
+                  </h5>
                   <Select.BtnDiv>
                     <Select.Button>
                       <Link to={"/cart"} className="navlink">

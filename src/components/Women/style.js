@@ -37,7 +37,7 @@ const Card = styled.div`
 const CardImg = styled.img`
   width: ${({ cart }) => (cart ? "20px" : "98%")};
   /* opacity: ${({ opacity }) => (opacity ? "0.5" : "")}; */
-  height: 80%;
+  height: 92%;
 `;
 const AddCard = styled.button`
   width: 50px;
