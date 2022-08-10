@@ -102,6 +102,7 @@ const Sizes = styled.div`
   display: flex;
   border: 1px solid #000000;
   align-items: center;
+  text-transform: uppercase;
   justify-content: center;
   /* :active {
     
