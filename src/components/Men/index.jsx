@@ -50,13 +50,6 @@ class Men extends Component {
             value?.category === "men" && (
               <Card.Wrapper key={value?.id}>
                 <Card className="card" onClick={() => sendTo(value)}>
-                  {/* <NavLink
-                    to={{
-                      pathname: `/product/${value?.id}`,
-                      state: { value },
-                    }}
-                  > */}
-
                   <Link
                     to={`/details?id=${value.id}`}
                     params={value}
@@ -64,17 +57,14 @@ class Men extends Component {
                   >
                     <CardImg src={value?.src} alt="image" />
                   </Link>
-
-                  {/* </NavLink> */}
                   <AddCard className="mini" onClick={() => onHandle(value)}>
                     <CardImg cart src={cart} alt="add to cart" />
                   </AddCard>
                   <Header mini>{value?.title}</Header>
                   <h4>
-                    {/* {console.log(this.props, "valyuta")} */}
                     {value?.price}{" "}
-                    {localStorage.getItem("curr")
-                      ? localStorage.getItem("curr")
+                    {JSON.parse(window.localStorage.getItem("curr"))
+                      ? JSON.parse(localStorage.getItem("curr"))
                       : "$"}
                   </h4>
                 </Card>

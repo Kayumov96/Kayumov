@@ -20,9 +20,9 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      eur: "",
-      usd: "",
-      jpy: "",
+      // eur: "",
+      // usd: "",
+      // jpy: "",
       showCart: false,
       valute: "$",
       count: 0,
@@ -98,7 +98,9 @@ class Navbar extends Component {
         return (
           <>
             <option value="$">$</option>
-            <option value="€">€</option>
+            <option value="€" selected>
+              €
+            </option>
             <option value="¥">¥</option>
           </>
         );
@@ -107,7 +109,9 @@ class Navbar extends Component {
           <>
             <option value="$">$</option>
             <option value="€ ">€</option>
-            <option value="¥">¥</option>
+            <option value="¥" selected>
+              ¥
+            </option>
           </>
         );
       } else {
@@ -125,9 +129,10 @@ class Navbar extends Component {
     return (
       <>
         <Container>
-          {navbar.map(({ path, id, title, hidden }) => {
+          {navbar.map(({ path, id, title, hidden, disp }) => {
             return (
-              !hidden && (
+              !hidden &&
+              !disp && (
                 <NavLink
                   key={id}
                   to={path}
@@ -169,7 +174,7 @@ class Navbar extends Component {
                   })}
                   <h5>
                     Total: <span id="total-price">{this.getTotalSum()}</span>{" "}
-                    {localStorage.getItem("curr")}
+                    {JSON.parse(localStorage.getItem("curr"))}
                   </h5>
                   <Select.BtnDiv>
                     <Select.Button>

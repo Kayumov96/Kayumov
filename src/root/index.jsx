@@ -17,17 +17,24 @@ class Root extends Component {
       <MainContext.Provider value={this?.state}>
         <Routes>
           <Route>
-            {navbar.map(({ path, id, element, hidden }) => {
-              return hidden && <Route key={id} path={path} element={element} />;
+            {navbar.map(({ path, id, element, hidden, disp }) => {
+              return (
+                hidden &&
+                !disp && <Route key={id} path={path} element={element} />
+              );
             })}
           </Route>
           <Route element={<Navbar />}>
-            {navbar.map((value) => (
-              <Route key={value.id} path={value.path} element={value.element} />
-            ))}
+            {navbar.map(({ path, id, element, hidden, disp }) => {
+              return (
+                (!hidden || disp) && (
+                  <Route key={id} path={path} element={element} />
+                )
+              );
+            })}
             <Route path="/" element={<Navigate to={"/men"} />} />
           </Route>
-          <Route path="/details" element={<DetailPage />} />
+          <Route path={`/details`} element={<DetailPage />} />
           <Route exact path="*" element={<Error />} />
         </Routes>
       </MainContext.Provider>

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { data } from "../../mock/mock";
+import Navbar from "../Navbar";
+import { Container, Imeg, Item } from "./style";
 
 class DetailPage extends Component {
   constructor(props) {
@@ -19,13 +21,23 @@ class DetailPage extends Component {
 
   render() {
     return (
-      <div>
-        <h1> Detail page </h1>
-        {this.getProduct().category} <br />
-        {this.getProduct().color} <br />
-        {this.getProduct().description} <br />
-        {this.getProduct().price} <br />
-      </div>
+      <>
+        <Navbar />
+        <Container>
+          <Container.Mini>
+            <Imeg mini src={this.getProduct().src} alt="img" />
+            <Imeg mini src={this.getProduct().src} alt="img" />
+            <Imeg mini src={this.getProduct().src} alt="img" />
+          </Container.Mini>
+          <Item>
+            <Imeg src={this.getProduct().src} alt="image" />
+          </Item>
+          {this.getProduct().category} <br />
+          {this.getProduct().color} <br />
+          {this.getProduct().description} <br />
+          {this.getProduct().price} <br />
+        </Container>
+      </>
     );
   }
 }

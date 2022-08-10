@@ -52,8 +52,8 @@ class Women extends Component {
                   <Header mini>{value?.title}</Header>
                   <h4>
                     {value?.price}{" "}
-                    {localStorage.getItem("curr")
-                      ? localStorage.getItem("curr")
+                    {JSON.parse(localStorage.getItem("curr"))
+                      ? JSON.parse(localStorage.getItem("curr"))
                       : "$"}
                   </h4>
                 </Card>
