@@ -39,13 +39,13 @@ const Text = styled.div`
   color: #1d1f22;
 `;
 Text.Mini = styled.div`
-  margin-top: 43px;
+  margin-top: ${({ cart }) => (cart ? "10px" : "43px")};
   width: ${({ description }) => (description ? "340px" : "")};
   height: ${({ description }) => (description ? "105px" : "")};
   text-transform: ${({ description }) => (description ? "" : "uppercase")};
   font-size: ${({ description }) => (description ? "16px" : "18px")};
   line-height: ${({ description }) => (description ? "159.96%" : "18px")};
-  font-weight: ${({ description }) => (description ? "400" : "700")};
+  font-weight: ${({ description }) => (description ? "400" : "bold")};
   color: #1d1f22;
 `;
 const Button = styled.button`
@@ -76,7 +76,7 @@ Button.Size = styled.div`
 `;
 const Getsize = styled.div`
   /* position: absolute; */
-  margin: 8px 0 24px 0;
+  margin: ${({ cart }) => (cart ? "7px 0 8px 0" : "8px 0 24px 0")};
   display: flex;
   height: 50px;
   width: 90%;

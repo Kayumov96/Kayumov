@@ -18,4 +18,19 @@ const Title = styled.div`
   line-height: 40px;
   border-bottom: 2px solid #e5e5e5;
 `;
+Container.Cart = styled.div`
+  height: 336px;
+  width: 100%;
+  display: flex;
+  /* background: red; */
+  padding: 10px 0 10px 12px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #e5e5e5;
+`;
+Title.Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  line-height: 20px;
+`;
 export { Container, Title };
