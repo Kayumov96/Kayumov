@@ -33,4 +33,12 @@ Title.Info = styled.div`
   gap: 17px;
   line-height: 20px;
 `;
-export { Container, Title };
+const AddRemove = styled.div`
+  width: ${({ image }) => (image ? "200px" : "45px")};
+  height: 288px;
+  display: flex;
+  flex-direction: column;
+  margin: ${({ image }) => (image ? "2% 0 0 1%" : "2% 0 0 60%")};
+  justify-content: space-between;
+`;
+export { Container, Title, AddRemove };

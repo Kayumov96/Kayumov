@@ -65,7 +65,7 @@ const Button = styled.button`
   }
 `;
 Button.Size = styled.div`
-  width: 63px;
+  width: ${({ add }) => (add ? "45px" : "63px")};
   height: 45px;
   color: #1d1f22;
   border: 1px solid #1d1f22;
@@ -73,6 +73,7 @@ Button.Size = styled.div`
   align-items: center;
   text-transform: uppercase;
   justify-content: center;
+  font-size: ${({ add }) => (add ? "40px" : "")};
 `;
 const Getsize = styled.div`
   /* position: absolute; */

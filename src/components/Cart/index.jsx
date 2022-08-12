@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import MainContext from "../Context";
 import { Button, Getsize, Text } from "../DetailProductPage/style";
 import Navbar from "../Navbar";
-import { Container, Title } from "./style";
+import { AddRemove, Container, Title } from "./style";
 
 class Cart extends Component {
   static contextType = MainContext;
@@ -36,6 +36,17 @@ class Cart extends Component {
                   ))}
                 </Getsize>
               </Title.Info>
+              <AddRemove>
+                <Button.Size add>+</Button.Size>
+                <Button.Size add>-</Button.Size>
+              </AddRemove>
+              <AddRemove image>
+                <img
+                  style={{ width: "100%", height: "100%" }}
+                  src={val?.src}
+                  alt="img"
+                />
+              </AddRemove>
             </Container.Cart>
           ))}
         </Container>
