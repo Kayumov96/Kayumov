@@ -172,8 +172,12 @@ class Navbar extends Component {
                     {JSON.parse(localStorage.getItem("curr"))}
                   </h5>
                   <Select.BtnDiv>
-                    <Select.Button>
-                      <Link to={"/cart"} className="navlink">
+                    <Select.Button onClick={() => this.getItemsCount()}>
+                      <Link
+                        to={"/cart"}
+                        state={this.getItemsCount()}
+                        className="navlink"
+                      >
                         View bag
                       </Link>
                     </Select.Button>

@@ -13,7 +13,9 @@ const Title = styled.div`
   font-weight: 700 bold;
   font-size: 32px;
   padding: 15px 0 0 20px;
+  /* margin: ${({ title }) => (title ? "100px 0 4% 0" : "")}; */
   margin-top: 100px;
+  padding-bottom: 55px;
   text-transform: uppercase;
   line-height: 40px;
   border-bottom: 2px solid #e5e5e5;

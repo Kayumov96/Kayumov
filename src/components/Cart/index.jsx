@@ -6,14 +6,19 @@ import { AddRemove, Container, Title } from "./style";
 
 class Cart extends Component {
   static contextType = MainContext;
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      counters: this.props?.state || 1,
+    };
+  }
   render() {
     const context = this.context;
     return (
       <>
         <Navbar />
         <Container>
-          <Title>Cart</Title>
+          <Title title>Cart</Title>
           {context?.cart?.map((val, index) => (
             <Container.Cart key={index}>
               <Title.Info>
@@ -38,6 +43,7 @@ class Cart extends Component {
               </Title.Info>
               <AddRemove>
                 <Button.Size add>+</Button.Size>
+                {this?.state?.counters}
                 <Button.Size add>-</Button.Size>
               </AddRemove>
               <AddRemove image>

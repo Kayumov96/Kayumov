@@ -98,8 +98,8 @@ class CartOverlay extends Component {
             </div>
             Color:
             <div style={{ display: "flex", gap: "6px" }}>
-              {value?.color.map((v) => (
-                <Sizes>{this.getColor(v)}</Sizes>
+              {value?.color.map((v, index) => (
+                <Sizes key={index}>{this.getColor(v)}</Sizes>
               ))}
             </div>
           </CartItems.Description>
